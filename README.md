@@ -5,6 +5,7 @@
 - create-next-app
 - Next.js
 - TypeScript
+- Scss
 
 ## 기능
 
