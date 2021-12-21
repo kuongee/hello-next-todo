@@ -1,3 +1,5 @@
+import { useSelector } from 'react-redux';
+import { RootState } from '@/stores/modules';
 import styles from '@/assets/styles/todo.module.scss';
 
 type Props = {
@@ -5,24 +7,13 @@ type Props = {
 };
 
 const TodoContainer = ({ children }: Props) => {
-  const todoData = [
-    {
-      id: 'za',
-      item: '할일 1',
-      isDone: false,
-    },
-    {
-      id: 'aa',
-      item: '할일 2',
-      isDone: true,
-    },
-  ];
+  const { todoItems } = useSelector((state: RootState) => state.todo);
 
   return (
     <div className={styles.todoContainer}>
       <h2>전체</h2>
       <ul>
-        {todoData.map((data) => (
+        {todoItems.map((data) => (
           <li key={data.id} className={styles.todoItem}>
             <input type='checkbox' checked={data.isDone} onChange={() => {}} />
             <label className={data.isDone ? styles.done : undefined}>
