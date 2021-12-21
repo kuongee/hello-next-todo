@@ -28,7 +28,18 @@ export type TodoState = {
 };
 
 const initialState: TodoState = {
-  todoItems: [],
+  todoItems: [
+    {
+      id: 1000,
+      item: 'init todo1',
+      isDone: true,
+    },
+    {
+      id: 1001,
+      item: 'init todo2',
+      isDone: false,
+    }
+  ],
 };
 
 const todo = (state: TodoState = initialState, action: TodoAction) => {
