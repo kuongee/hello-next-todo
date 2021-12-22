@@ -1,4 +1,3 @@
-import { useSelector } from 'react-redux';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import styles from '@/assets/styles/todo.module.scss';
 import 'swiper/css';

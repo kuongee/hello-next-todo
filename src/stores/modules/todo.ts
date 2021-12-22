@@ -1,4 +1,5 @@
 const ADD_ITEM = 'todo/ADD' as const;
+const UPDATE_ITEM = 'todo/UPDATE' as const;
 const DELETE_ITEM = 'todo/DELETE' as const;
 
 type todoItem = {
@@ -17,11 +18,21 @@ export const addItem = (todo: { item: string }) => ({
   },
 });
 
+export const updateItem = (currTodo: todoItem) => ({
+  type: UPDATE_ITEM,
+  updateTodo: {
+    ...currTodo,
+  },
+});
+
 export const deleteItem = () => ({
   type: DELETE_ITEM,
 });
 
-type TodoAction = ReturnType<typeof addItem> | ReturnType<typeof deleteItem>;
+type TodoAction =
+  | ReturnType<typeof addItem>
+  | ReturnType<typeof updateItem>
+  | ReturnType<typeof deleteItem>;
 
 export type TodoState = {
   todoItems: Array<todoItem>;
@@ -38,7 +49,7 @@ const initialState: TodoState = {
       id: 1001,
       item: 'init todo2',
       isDone: false,
-    }
+    },
   ],
 };
 
@@ -48,6 +59,18 @@ const todo = (state: TodoState = initialState, action: TodoAction) => {
       return {
         todoItems: [...state.todoItems, action.newTodo],
       };
+    case UPDATE_ITEM:
+      return {
+        todoItems: state.todoItems.map((item) => {
+          if (item.id === action.updateTodo.id) {
+            return {
+              ...action.updateTodo,
+            };
+          }
+          return { ...item };
+        }),
+      };
+
     default:
       return state;
   }

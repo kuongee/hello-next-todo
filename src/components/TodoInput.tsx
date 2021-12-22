@@ -4,7 +4,7 @@ import { addItem } from '@/stores/modules/todo';
 import styles from '@/assets/styles/input.module.scss';
 
 const TodoInput = () => {
-  const dispatch = useDispatch(); // 디스패치 함수를 가져옵니다
+  const dispatch = useDispatch();
 
   const [value, setValue] = useState('');
 
