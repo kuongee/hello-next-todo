@@ -4,4 +4,9 @@ export const LIST_TYPE = {
   DONE: 'DONE',
 } as const;
 
-// 참고 - https://engineering.linecorp.com/ko/blog/typescript-enum-tree-shaking/
+export const ANIMALS = {
+  CAT: "cat",
+  DOG: "dog",
+};
+
+export const ALL = "all";
