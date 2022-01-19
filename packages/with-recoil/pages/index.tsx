@@ -1,16 +1,17 @@
-import type { NextPage } from 'next';
-import styles from '@/assets/styles/app.module.scss';
-import { Layout, TodoContainer } from '@/components';
-import TodoInput from '@/components/TodoInput';
+import Link from 'next/link'
+import Layout from '../component_view/Layout'
+import LoginForm from '../component_view/LoginForm'
 
-const Main: NextPage = () => {
-  return (
-    <Layout>
-      <h1 className={styles.title}>recoil</h1>
-      <TodoContainer />
-      <TodoInput />
-    </Layout>
-  );
-};
+const IndexPage = () => (
+  <Layout title="Home | Next.js + TypeScript Example">
+    <h1>Hello Next.js 👋</h1>
+    <p>
+      <Link href="/about">
+        <a>About</a>
+      </Link>
+    </p>
+    <LoginForm />
+  </Layout>
+)
 
-export default Main;
+export default IndexPage
